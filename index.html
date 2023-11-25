@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stars.css" />
+    <title>Pixel PX to VH | VW Viewport conversion</title>
+  </head>
+
+  <body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div>
+      <main>
+        <!-- 1 -->
+        <span class="text1">conversor px vh vw</span>
+        <div>
+          <span class="text">px para vh</span>
+          <br />
+          <input
+            class="pixelToVH"
+            type="number"
+            onkeyup="pixelToVH(this.value);"
+          />
+          <br />
+          <span class="result" id="pixelToVH">Resultado</span>
+        </div>
+        <!-- 2 -->
+        <div>
+          <span class="text">px para vw</span>
+          <br />
+          <input
+            class="pixelToVW"
+            type="number"
+            onkeyup="pixelToVW(this.value);"
+          />
+          <br />
+          <span class="result" id="pixelToVW">resultado</span>
+        </div>
+        <!-- 3 -->
+        <div>
+          <span class="text">vh para px</span>
+          <br />
+          <input
+            class="vhToPixel"
+            type="number"
+            onkeyup="vhToPixel(this.value);"
+          />
+          <br />
+          <span class="result" id="vhToPixel">resultado</span>
+        </div>
+        <!-- 4 -->
+        <div>
+          <span class="text">vw para px</span>
+          <br />
+          <input
+            class="vwToPixel"
+            type="number"
+            onkeyup="vwToPixel(this.value);"
+          />
+          <br />
+          <span class="result" id="vwToPixel">resultado</span>
+        </div>
+      </main>
+    </div>
+  </body>
+
+  <script>
+    function pixelToVH(value) {
+      return (document.querySelector("#pixelToVH").innerHTML = `Resultado = ${
+        (100 * value) / window.innerHeight
+      }vh`);
+    }
+    function pixelToVW(value) {
+      return (document.querySelector("#pixelToVW").innerHTML = `Resultado = ${
+        (100 * value) / window.innerWidth
+      }vw`);
+    }
+    function vhToPixel(value) {
+      return (document.querySelector("#vhToPixel").innerHTML = `Resultado = ${
+        (window.innerHeight * value) / 100
+      }px`);
+    }
+    function vwToPixel(value) {
+      return (document.querySelector("#vwToPixel").innerHTML = `Resultado = ${
+        (window.innerWidth * value) / 100
+      }px`);
+    }
+
+    window.addEventListener("resize", updateMeasurements);
+    function updateMeasurements() {
+      const pixelToVHValue = document.querySelector(".pixelToVH").value;
+      const pixelToVWValue = document.querySelector(".pixelToVW").value;
+      const vhToPixelValue = document.querySelector(".vhToPixel").value;
+      const vwToPixelValue = document.querySelector(".vwToPixel").value;
+      pixelToVH(pixelToVHValue);
+      pixelToVW(pixelToVWValue);
+      vhToPixel(vhToPixelValue);
+      vwToPixel(vwToPixelValue);
+    }
+  </script>
+</html>
